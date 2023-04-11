@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>YouTube Channel ID Finder</title>
+	<style>
+		body {
+			background-color: #333333;
+			color: #ffffff;
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+		}
+		
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 50px;
+		}
+		
+		input[type=text] {
+			width: 400px;
+			height: 40px;
+			font-size: 18px;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			margin-bottom: 20px;
+		}
+		
+		button {
+			background-color: #FF0000;
+			color: #ffffff;
+			font-size: 18px;
+			font-weight: bold;
+			border: none;
+			border-radius: 5px;
+			padding: 10px 20px;
+			cursor: pointer;
+		}
+		
+		button:hover {
+			background-color: #990000;
+		}
+		
+		#result {
+			display: none;
+			font-size: 24px;
+			font-weight: bold;
+			margin-top: 50px;
+		}
+	</style>
+	<script>
+		function getChannelId() {
+			// Get the YouTube URL entered by the user
+			var url = document.getElementById("youtubeUrl").value;
+			
+			// Extract the channel ID from the URL
+			var channelId = url.match(/\/channel\/([\w-]+)/i)[1];
+			
+			// Display the channel ID to the user
+			document.getElementById("result").innerHTML = "Channel ID: " + channelId;
+			document.getElementById("result").style.display = "block";
+		}
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<form>
+			<label for="youtubeUrl">Enter a YouTube Channel URL:</label>
+			<input type="text" id="youtubeUrl" name="youtubeUrl" placeholder="https://www.youtube.com/channel/...">
+			<button type="button" onclick="getChannelId()">Submit</button>
+		</form>
+		
+		<div id="result"></div>
+	</div>
+</body>
+</html>
